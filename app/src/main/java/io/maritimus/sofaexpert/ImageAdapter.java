@@ -1,5 +1,6 @@
 package io.maritimus.sofaexpert;
 
+
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,61 +8,85 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+
+import io.maritimus.sofaexpert.model.Movie;
+
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
-    private final int height;
-    private final int width;
+    private final ArrayList<Movie> mMovies;
+    private final int mHeight;
+    private final int mWidth;
 
     public ImageAdapter(Context c) {
         mContext = c;
-        height = Math.round(mContext.getResources().getDimension(R.dimen.poster_height));
-        width = Math.round(mContext.getResources().getDimension(R.dimen.poster_width));
+        mMovies = new ArrayList<>();
+        mHeight = Math.round(mContext.getResources().getDimension(R.dimen.poster_height));
+        mWidth = Math.round(mContext.getResources().getDimension(R.dimen.poster_width));
+
+        mMovies.add(new Movie(
+                        100500L,
+                        "Best movie ever",
+                        "lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar 1000 2000 3000 4000 5000 6000 7000 8000 9000",
+                        "/some.part.or.url.jpg",
+                        8.5,
+                        1234
+                )
+        );
+
+        mMovies.add(new Movie(
+                        100501L,
+                        "Test me movie",
+                        "lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar 1000 2000 3000 4000 5000 6000 7000 8000 9000",
+                        "/some.part.or.url.jpg",
+                        4,
+                        123
+                )
+        );
     }
 
+    @Override
     public int getCount() {
-        return mThumbIds.length;
+        return mMovies.size();
     }
 
-    public Object getItem(int position) {
-        return null;
+    @Override
+    public Movie getItem(int position) {
+        if (position < 0 || position >= mMovies.size()) {
+            return null;
+        }
+        return mMovies.get(position);
     }
 
+    @Override
     public long getItemId(int position) {
-        return 0;
+        Movie movie = getItem(position);
+        if (movie == null) {
+            return -1L;
+        }
+
+        return movie.id;
     }
 
-    // create a new ImageView for each item referenced by the Adapter
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Movie movie = getItem(position);
+        if (movie == null) {
+            return null;
+        }
+
         ImageView imageView;
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
-
-
-
-            imageView.setLayoutParams(new GridView.LayoutParams(width, height));
+            imageView.setLayoutParams(new GridView.LayoutParams(mWidth, mHeight));
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            //imageView.setPadding(8, 8, 8, 8);
         } else {
             imageView = (ImageView) convertView;
         }
 
-        imageView.setImageResource(mThumbIds[position]);
+        imageView.setImageResource(R.drawable.sample_1);
+
         return imageView;
     }
-
-    // references to our images
-    private Integer[] mThumbIds = {
-            R.drawable.sample_2, R.drawable.sample_3,
-            R.drawable.sample_4, R.drawable.sample_5,
-            R.drawable.sample_6, R.drawable.sample_7,
-            R.drawable.sample_0, R.drawable.sample_1,
-            R.drawable.sample_2, R.drawable.sample_3,
-            R.drawable.sample_4, R.drawable.sample_5,
-            R.drawable.sample_6, R.drawable.sample_7,
-            R.drawable.sample_0, R.drawable.sample_1,
-            R.drawable.sample_2, R.drawable.sample_3,
-            R.drawable.sample_4, R.drawable.sample_5,
-            R.drawable.sample_6, R.drawable.sample_7
-    };
 }
