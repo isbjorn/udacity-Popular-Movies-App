@@ -2,13 +2,17 @@ package io.maritimus.sofaexpert;
 
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
+import java.util.Collection;
 
 import io.maritimus.sofaexpert.model.Movie;
 
@@ -23,26 +27,11 @@ public class ImageAdapter extends BaseAdapter {
         mMovies = new ArrayList<>();
         mHeight = Math.round(mContext.getResources().getDimension(R.dimen.poster_height));
         mWidth = Math.round(mContext.getResources().getDimension(R.dimen.poster_width));
+    }
 
-        mMovies.add(new Movie(
-                        100500L,
-                        "Best movie ever",
-                        "lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar 1000 2000 3000 4000 5000 6000 7000 8000 9000",
-                        "/some.part.or.url.jpg",
-                        8.5,
-                        1234
-                )
-        );
-
-        mMovies.add(new Movie(
-                        100501L,
-                        "Test me movie",
-                        "lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar lorm ipsum one yuntz foo bar 1000 2000 3000 4000 5000 6000 7000 8000 9000",
-                        "/some.part.or.url.jpg",
-                        4,
-                        123
-                )
-        );
+    public void addAll(Collection<Movie> xs) {
+        mMovies.addAll(xs);
+        notifyDataSetChanged();
     }
 
     @Override
@@ -85,7 +74,11 @@ public class ImageAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        imageView.setImageResource(R.drawable.sample_1);
+        Uri coverUri = movie.buildCoverUri(mContext.getString(R.string.cover_default_size));
+        Picasso.with(mContext)
+                .load(coverUri)
+                .placeholder(R.drawable.cover_loading_w185)
+                .into(imageView);
 
         return imageView;
     }

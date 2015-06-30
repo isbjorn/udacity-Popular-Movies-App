@@ -1,6 +1,10 @@
 package io.maritimus.sofaexpert.model;
 
+import android.net.Uri;
 import android.os.Bundle;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Movie {
     public static final String EXTRA_MOVIE = "io.maritimus.sofaexpert.EXTRA_MOVIE";
@@ -57,4 +61,26 @@ public class Movie {
         return bundle;
     }
 
+
+    public static Movie fromJson(JSONObject jsonObject) throws JSONException {
+        return new Movie(
+                jsonObject.getLong(KEY_ID),
+                jsonObject.getString(KEY_TITLE),
+                jsonObject.getString(KEY_OVERVIEW),
+                jsonObject.getString(KEY_POSTER_PATH),
+                jsonObject.getDouble(KEY_VOTE_AVERAGE),
+                jsonObject.getLong(KEY_VOTE_COUNT)
+        );
+    }
+
+    public Uri buildCoverUri(String size) {
+        final String BASE_URL = "http://image.tmdb.org/t/p/";
+
+        Uri builtUri = Uri.parse(BASE_URL).buildUpon()
+                .appendPath(size)
+                .appendEncodedPath(poster_path)
+                .build();
+
+        return builtUri;
+    }
 }

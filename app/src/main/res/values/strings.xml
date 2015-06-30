@@ -10,11 +10,17 @@
     <string name="pref_sorting_key" translatable="false">sorting</string>
     <string name="pref_sorting_label">Sort order</string>
 
+    <string name="msg_loading">loading...</string>
+
+
     <!-- prefs -->
     <string name="pref_sorting_label_popular">Most popular first</string>
     <string name="pref_sorting_label_rating">Highest-rated first</string>
     <string name="pref_sorting_value_popular" translatable="false">popular</string>
     <string name="pref_sorting_value_rating" translatable="false">top_rated</string>
     <string name="pref_sorting_default_value" translatable="false">popular</string>
+    <string name="msg_server_error">Server error</string>
+    <string name="api_key">cfb1decdd632391492006dbbfbb3e73b</string>
+    <string name="cover_default_size">w154</string>
 
 </resources>
