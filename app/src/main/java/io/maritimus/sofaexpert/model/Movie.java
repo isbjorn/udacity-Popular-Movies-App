@@ -73,7 +73,7 @@ public class Movie {
         );
     }
 
-    public Uri buildCoverUri(String size) {
+    public Uri buildPosterUri(String size) {
         final String BASE_URL = "http://image.tmdb.org/t/p/";
 
         Uri builtUri = Uri.parse(BASE_URL).buildUpon()

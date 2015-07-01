@@ -74,9 +74,9 @@ public class ImageAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        Uri coverUri = movie.buildCoverUri(mContext.getString(R.string.api_poster_default_size));
+        Uri posterUri = movie.buildPosterUri(mContext.getString(R.string.api_poster_default_size));
         Picasso.with(mContext)
-                .load(coverUri)
+                .load(posterUri)
                 .into(imageView);
 
         return imageView;
