@@ -45,7 +45,7 @@ public class Movie {
     }
 
     public String getRating() {
-        return "" + vote_average + " / " + vote_count;
+        return "" + vote_average + " / 10 (" + vote_count + ")";
     }
 
     public Bundle toBundle() {
@@ -84,3 +84,4 @@ public class Movie {
         return builtUri;
     }
 }
+4
