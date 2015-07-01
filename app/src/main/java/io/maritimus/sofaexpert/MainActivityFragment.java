@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -61,13 +62,17 @@ public class MainActivityFragment extends Fragment {
 
             try {
                 final String API_BASE_URL = "http://api.themoviedb.org/3/movie/";
-                final String API_PATH_TOP_RATED = "top_rated";
-                final String API_PATH_POPULAR = "popular";
                 final String API_PARAM_PAGE = "page";
                 final String API_PARAM_KEY = "api_key";
+                final String API_SORTING = PreferenceManager
+                        .getDefaultSharedPreferences(getActivity())
+                        .getString(
+                                getString(R.string.pref_sorting_key),
+                                getString(R.string.pref_sorting_default_value)
+                        );
 
                 Uri builtUri = Uri.parse(API_BASE_URL).buildUpon()
-                        .appendPath(API_PATH_POPULAR)
+                        .appendPath(API_SORTING)
                         .appendQueryParameter(API_PARAM_PAGE, String.valueOf(page))
                         .appendQueryParameter(API_PARAM_KEY, getString(R.string.api_key))
                         .build();
@@ -76,7 +81,7 @@ public class MainActivityFragment extends Fragment {
                 Log.d(LOG_TAG, "QUERY URI: " + builtUri.toString());
                 URL url = new URL(builtUri.toString());
 
-                // Create the request to OpenWeatherMap, and open the connection
+                // Create the request to themoviedb api, and open the connection
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
                 urlConnection.connect();
