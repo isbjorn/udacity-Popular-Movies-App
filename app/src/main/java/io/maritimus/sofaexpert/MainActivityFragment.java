@@ -40,6 +40,7 @@ public class MainActivityFragment extends Fragment {
     public MainActivityFragment() {
     }
 
+    public static final int MAX_PAGES = 100;
     private boolean mIsLoading = false;
     private int mPagesLoaded = 0;
     private TextView mLoading;
@@ -171,6 +172,10 @@ public class MainActivityFragment extends Fragment {
 
     private void startLoading() {
         if (mIsLoading) {
+            return;
+        }
+
+        if (mPagesLoaded >= MAX_PAGES) {
             return;
         }
 
