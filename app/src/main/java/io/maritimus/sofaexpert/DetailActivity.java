@@ -1,11 +1,15 @@
 package io.maritimus.sofaexpert;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import io.maritimus.sofaexpert.model.Movie;
 
@@ -23,6 +27,11 @@ public class DetailActivity extends ActionBarActivity {
             ((TextView)findViewById(R.id.movie_title)).setText(movie.title);
             ((TextView)findViewById(R.id.movie_rating)).setText(movie.getRating());
             ((TextView)findViewById(R.id.movie_overview)).setText(movie.overview);
+
+            Uri posterUri = movie.buildCoverUri(getString(R.string.api_poster_default_size));
+            Picasso.with(this)
+                    .load(posterUri)
+                    .into((ImageView)findViewById(R.id.movie_poster));
         }
     }
 

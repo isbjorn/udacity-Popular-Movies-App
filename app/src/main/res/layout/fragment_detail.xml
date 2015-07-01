@@ -27,28 +27,27 @@
 
             <TextView
                 android:id="@+id/movie_title"
-                android:text="Title of movie"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextAppearance.AppCompat.Title" />
 
             <TextView
                 android:id="@+id/movie_rating"
-                android:text="7.6 / 10"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextAppearance.AppCompat.Large" />
 
             <ImageView
                 android:id="@+id/movie_poster"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/sample_3"
+                android:layout_width="@dimen/poster_width"
+                android:layout_height="@dimen/poster_height"
                 android:padding="16dp" />
 
             <TextView
                 android:id="@+id/movie_overview"
-                android:text="lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+                android:text=""
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 style="@style/TextAppearance.AppCompat.Medium" />
