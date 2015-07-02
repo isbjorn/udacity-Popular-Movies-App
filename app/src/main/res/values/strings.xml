@@ -25,4 +25,7 @@
     <string name="api_key">cfb1decdd632391492006dbbfbb3e73b</string>
     <string name="api_poster_default_size">w154</string>
 
+    <!-- labels -->
+    <string name="label_movie_release_date">Release date:</string>
+
 </resources>

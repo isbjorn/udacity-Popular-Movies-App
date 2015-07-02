@@ -27,14 +27,12 @@
 
             <TextView
                 android:id="@+id/movie_title"
-                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextAppearance.AppCompat.Title" />
 
             <TextView
                 android:id="@+id/movie_rating"
-                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextAppearance.AppCompat.Large" />
@@ -45,9 +43,31 @@
                 android:layout_height="@dimen/poster_height"
                 android:padding="16dp" />
 
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/scrollView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_movie_release_date"
+                    android:id="@+id/movie_release_date_label"
+                    style="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_release_date"
+                    style="@style/Base.TextAppearance.AppCompat.Medium" />
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/movie_overview"
-                android:text=""
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 style="@style/TextAppearance.AppCompat.Medium" />

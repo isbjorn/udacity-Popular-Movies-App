@@ -27,6 +27,8 @@ public class DetailActivity extends ActionBarActivity {
             ((TextView)findViewById(R.id.movie_title)).setText(movie.title);
             ((TextView)findViewById(R.id.movie_rating)).setText(movie.getRating());
             ((TextView)findViewById(R.id.movie_overview)).setText(movie.overview);
+            ((TextView)findViewById(R.id.movie_release_date)).setText(movie.release_date);
+
 
             Uri posterUri = movie.buildPosterUri(getString(R.string.api_poster_default_size));
             Picasso.with(this)

@@ -14,6 +14,7 @@ public class Movie {
     public static final String KEY_POSTER_PATH = "poster_path";
     public static final String KEY_VOTE_AVERAGE = "vote_average";
     public static final String KEY_VOTE_COUNT = "vote_count";
+    public static final String KEY_RELEASE_DATE = "release_date";
 
     public final long id;
     public final String title;
@@ -21,16 +22,18 @@ public class Movie {
     public final String poster_path;
     public final double vote_average;
     public final long vote_count;
+    public final String release_date;
 
     public Movie(long id,
                  String title, String overview, String poster_path,
-                 double vote_average, long vote_count) {
+                 double vote_average, long vote_count, String release_date) {
         this.id = id;
         this.title = title;
         this.overview = overview;
         this.poster_path = poster_path;
         this.vote_average = vote_average;
         this.vote_count = vote_count;
+        this.release_date = release_date;
     }
 
     public Movie(Bundle bundle) {
@@ -40,7 +43,8 @@ public class Movie {
                 bundle.getString(KEY_OVERVIEW),
                 bundle.getString(KEY_POSTER_PATH),
                 bundle.getDouble(KEY_VOTE_AVERAGE),
-                bundle.getLong(KEY_VOTE_COUNT)
+                bundle.getLong(KEY_VOTE_COUNT),
+                bundle.getString(KEY_RELEASE_DATE)
         );
     }
 
@@ -57,6 +61,8 @@ public class Movie {
         bundle.putString(KEY_POSTER_PATH, poster_path);
         bundle.putDouble(KEY_VOTE_AVERAGE, vote_average);
         bundle.putLong(KEY_VOTE_COUNT, vote_count);
+        bundle.putString(KEY_RELEASE_DATE, release_date);
+
 
         return bundle;
     }
@@ -69,7 +75,8 @@ public class Movie {
                 jsonObject.getString(KEY_OVERVIEW),
                 jsonObject.getString(KEY_POSTER_PATH),
                 jsonObject.getDouble(KEY_VOTE_AVERAGE),
-                jsonObject.getLong(KEY_VOTE_COUNT)
+                jsonObject.getLong(KEY_VOTE_COUNT),
+                jsonObject.getString(KEY_RELEASE_DATE)
         );
     }
 
